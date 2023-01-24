@@ -1,4 +1,3 @@
-// Description: This is the main entry point of the application
 //Require the express module
 
 //Create an express application
