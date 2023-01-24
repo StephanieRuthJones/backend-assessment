@@ -40,7 +40,12 @@ _Tips:_
   - [ ] Set up the `app` object
   - [ ] Set the `port` to `3000`
   - [ ] Set up the `app` object to use `express.json()` middleware to parse JSON bodies
+  - [ ] Add a GET route to `/` that returns a `200` status and a JSON object with a `message` key assigned to a string that reads, `"Welcome to the Rick and Morty API!"`
   - [ ] Set up the server to listen on port `3000`.
+  - [ ] Run your server with `npm run server`
+  - [ ] Check that your server is running:
+    - [ ] You should see your "Listening on port 3000" log in the terminal.
+    - [ ] When you visit `http://localhost:3000/` in your browser, you should see a JSON object, `{message: "Welcome to the Rick and Morty API!"}`.
 
 ### Part I - Basic GET Routes
 

@@ -11,6 +11,11 @@ const port = 3000;
 //Use express.json() to parse JSON bodies
 app.use(express.json());
 
+//GET route for the root of the API
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to the Rick and Morty API!" });
+});
+
 //Require routes from files
 
 //Use /definitions as the base route for definition routes
