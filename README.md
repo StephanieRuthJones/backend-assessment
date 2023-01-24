@@ -40,11 +40,13 @@ _Tips:_
   - [ ] Set up the `app` object
   - [ ] Set the `port` to `3000`
   - [ ] Set up the `app` object to use `express.json()` middleware to parse JSON bodies
-  - [ ] Use `/` as the base path for all definition routes
-  - [ ] Use `/api` as the base path for all character routes
   - [ ] Set up the server to listen on port `3000`.
 
 ### Part I - Basic GET Routes
+
+All routes in this section should be created in the `definitionRoutes.js` file.
+
+- [ ] Use `/definitions` as the base path for all definition routes
 
 `/route` Route
 
@@ -59,6 +61,10 @@ _Tips:_
 - [ ] Create a GET `/root` route in the `definitionRoutes.js` that responds with a `200 status` and returns a JSON object with a `message` key assigned to a string that is the name of the root file that will execute when this application is started (i.e., the file responsible for setting up the server, loading the models and controllers, and defining any middleware or routes that the application will use).
 
 ### Part II - API GET Routes: Return Rick and Morty Data
+
+All routes in this section should be created in the `charactersRoutes.js` file.
+
+- [ ] Use `/api` as the base path for all character routes
 
 `/characters` Route:
 Create a GET route in the `charactersRoutes.js` file that:
