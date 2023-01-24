@@ -2,24 +2,9 @@
 
 ## Introduction
 
-Welcome to the Node and Express Backend Assessment! In this challenge, you will be using the [x API]() to build API enpoints and to combine data from the API.
+Welcome to the Node and Express Backend Assessment!
 
-You will be creating routes and controllers in the appropriate folder/files.
-
-<details>
-<summary>What is a route?</summary>
-A route in a Node Express app is a JavaScript object that defines the behavior of the server when an HTTP request is made to an endpoint.
-
-Routes are defined using Express’s Router class and contain a path (URL) and HTTP method (GET, POST, PUT, etc.) as well as any additional middleware or callback functions that should be executed when the route is accessed.
-
-Routes are used to create the application’s API and handle the logic for the application.
-
-</details>
-
-<details>
-<summary>What is a controller?</summary>
-A controller in a Node Express app is a JavaScript object that defines the behavior of the server when a request is made to an endpoint. Controllers are usually defined using Express’s Router class and contain a path (URL) and HTTP method (GET, POST, PUT, etc.) as well as any additional middleware or callback functions that should be executed when the controller is accessed. Controllers are used to process requests, handle business logic, and interact with models in order to return the appropriate response.
-</details>
+In this challenge, you will be using the [Rick and Morty API](https://rickandmortyapi.com/documentation/) to build API endpoints and to combine data from the API. You will be creating routes and controllers in the appropriate folder/files as well as middleware to handle errors.
 
 To complete this assessment, follow the setup instructions, then complete every task in Parts I through V of the challenge outlined below.
 
@@ -41,6 +26,7 @@ _Tips:_
 - Use [Postman](https://www.postman.com/downloads/) to test your API endpoints. Read [Postmant documentation] (https://learning.postman.com/docs/getting-started/introduction/) as needed.
 - Use [axios documentation](https://www.npmjs.com/package/axios) as needed.
 - Use [Express documentation](https://expressjs.com/en/4x/api.html) as needed.
+- Use [Rick and Morty API](https://rickandmortyapi.com/documentation/) documentation as needed.
 - Be sure to import and register routes in the `app.js` file as you create them.
 
 ### Setup Instructions
@@ -53,39 +39,57 @@ _Tips:_
   - [ ] Require the `express` module
   - [ ] Set up the `app` object
   - [ ] Set the `port` to `3000`
-  - [ ] Set up the `app` object to use `express.json()` middleware
+  - [ ] Set up the `app` object to use `express.json()` middleware to parse JSON bodies
+  - [ ] Add a GET route to `/` that returns a `200` status and a JSON object with a `message` key assigned to a string that reads, `"Welcome to the Rick and Morty API!"`
   - [ ] Set up the server to listen on port `3000`.
+  - [ ] Run your server with `npm run server`
+  - [ ] Check that your server is running:
+    - [ ] You should see your "Listening on port 3000" log in the terminal.
+    - [ ] When you visit `http://localhost:3000/` in your browser, you should see a JSON object, `{message: "Welcome to the Rick and Morty API!"}`.
 
 ### Part I - Basic GET Routes
 
+All routes in this section should be created in the `definitionRoutes.js` file.
+
+- [ ] Use `/definitions` as the base path for all definition routes
+
 `/route` Route
 
-- [ ] Create a GET `/route` route in the `definitionRoutes.js` file that returns a message defining what a route is
+- [ ] Create a GET `/route` route in the `definitionRoutes.js` file that responds with a `200 status` and returns a JSON object with a `message` key assigned to a string defining what a `route` is in the context of an API
 
 `/controller` Route
 
-- [ ] Create a GET `/controller` route in the `definitionRoutes.js` file that returns a message defining what a controller is
+- [ ] Create a GET `/controller` route in the `definitionRoutes.js` file that responds with a `200 status` and returns a JSON object with a `message` key assigned to a string defining what a `controller` is in the context of an API
 
 `/root` Route
 
-- [ ] Create a GET `/root` route in the `definitionRoutes.js` that returns the name of the root file that will execute when this application is started (i.e., the file responsible for setting up the server, loading the models and controllers, and defining any middleware or routes that the application will use).
+- [ ] Create a GET `/root` route in the `definitionRoutes.js` that responds with a `200 status` and returns a JSON object with a `message` key assigned to a string that is the name of the root file that will execute when this application is started (i.e., the file responsible for setting up the server, loading the models and controllers, and defining any middleware or routes that the application will use).
 
 ### Part II - API GET Routes: Return Rick and Morty Data
+
+All routes in this section should be created in the `charactersRoutes.js` file.
+
+- [ ] Use `/api` as the base path for all character routes
 
 `/characters` Route:
 Create a GET route in the `charactersRoutes.js` file that:
 
-- [ ] Returns all **Rick and Morty** characters.
+- [ ] Returns an array of **Rick and Morty** characters.
+- [ ] If the `catch` block is triggered, returns a `500` status and a JSON object with a `message` key assigned to a string that reads, `"Server error. Please try again later."`
 
 `/characters/:id` Route:
 Create a GET route in the `charactersRoutes.js` file that:
 
 - [ ] Returns a single **Rick and Morty** character object based on an ID parameter.
+- [ ] If the `catch` block is triggered, it returns the error `status` and a JSON object with a `message` key assigned to the error `statusText`. Use [Axios Response Schema documentation](https://axios-http.com/docs/res_schema) as needed.
 
-`/characters/alive` Route:
+`/characters/status/:status` Route:
 Create a GET route in the `charactersRoutes.js` file that:
 
-- [ ] Returns an array of **Rick and Morty** characters who are alive.
+- [ ] Returns an array of **Rick and Morty** characters who are either alive or dead based on a `status` parameter.
+  - [ ] The `status` parameter should be case insensitive.
+  - [ ] The array of characters should be an array of name strings, sorted by first name in alphabetical order.
+- [ ] If the `catch` block is triggered, it returns the error `status` and a JSON object with a `message` key assigned to the error message contained in the `axios` error response data. Use [Axios Response Schema documentation](https://axios-http.com/docs/res_schema) as needed.
 
 ### Part III - Advanced Routes: Return Combined Data
 
