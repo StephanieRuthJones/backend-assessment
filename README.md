@@ -93,20 +93,26 @@ Create a GET route in the `charactersRoutes.js` file that:
 
 ### Part III - Advanced Routes: Return Combined Data
 
-`characters/:location` Route:
+`/characters/location/:location` Route:
 Create a GET route in the `charactersRoutes.js` file that:
 
-- [ ] Returns an array of **Rick and Morty** characters who are residents of the specified location.
-  - [ ] The `location` parameter should be case insensitive.
-  - [ ] The array of characters should be an array of name strings, sorted by first name in alphabetical order.
-- [ ] Returns an error message of `"Location not found"` if the location is not found.
-- [ ] Returns an error message of `"No characters found"` if no characters are found for the specified location.
+- [ ] Returns an array of **Rick and Morty** character names in alphabetical order who are residents of the first returned location. If multiple locations match the parameter, only return the characters from the first location in the returned array.
+- [ ] If the `catch` block is triggered, it returns the error `status` and a JSON object with a `message` key assigned to the error `statusText`. Use [Axios Response Schema documentation](https://axios-http.com/docs/res_schema) as needed.
 
-`characters/:episode` Route:
-Create a GET route in the `charactersRoutes.js` file that:
+Commit to Github
 
-- [ ] Returns an array of **Rick and Morty** characters who appear in the specified episode.
-  - [ ] The `episode` parameter should be case insensitive.
-  - [ ] The array of characters should be an array of name strings, sorted by first name in alphabetical order.
-- [ ] Returns an error message of `"Episode not found"` if the episode is not found.
-- [ ] Returns an error message of `"No characters found"` if no characters are found for the specified episode.
+- [ ] Commit your work to Github and push to your forked repository w/ a commit message that reads, "Part III - Advanced Routes: Return Combined Data".
+
+### Part IV - Error Handling Middleware
+
+- [ ] Create error handling middleware in the `errorHandler.js` file and implement it in the `app.js` file that meets the following requirements:
+  - [ ] Logs the error message to the console.
+- [ ] Refactor the `characters/location/:location` and `characters/:episode` controllers to trigger error handling middleware in their `catch` blocks.
+
+The middleware should:
+
+- [ ] Logs the error message to the console.
+- [ ] Logs the error stack to the console.
+- [ ] Logs the error status to the console.
+- [ ] Logs the error status text to the console.
+- [ ]
