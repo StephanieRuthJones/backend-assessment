@@ -97,10 +97,6 @@ Create a GET route in the `charactersRoutes.js` file that:
 - [ ] Returns an array of **Rick and Morty** character names in alphabetical order who are residents of the first returned location. If multiple locations match the parameter, only return the characters from the first location in the returned array.
 - [ ] If the `catch` block is triggered, it returns the error `status` and a JSON object with a `message` key assigned to the error `statusText`. Use [Axios Response Schema documentation](https://axios-http.com/docs/res_schema) as needed.
 
-`/airdate/:date` Route:
-Create a GET route in the `charactersRoutes.js` file that:
-- [ ] Returns 
-
 Commit to Github
 
 - [ ] Commit your work to Github and push to your forked repository w/ a commit message that reads, "Part III - Advanced Routes: Return Combined Data".
