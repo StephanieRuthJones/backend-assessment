@@ -1,5 +1,3 @@
-//Require the express module
-const express = require("express");
 //Require axios module
 const axios = require("axios");
 //Set base URL for API
@@ -34,7 +32,7 @@ const getCharacterById = async (req, res) => {
   }
 };
 
-const getAliveCharacters = async (req, res) => {
+const getCharactersByStatus = async (req, res) => {
   const { status } = req.params;
   try {
     const response = await axios.get(`${baseURL}/character?status=${status}`);
@@ -51,4 +49,32 @@ const getAliveCharacters = async (req, res) => {
   }
 };
 
-module.exports = { getCharacters, getCharacterById, getAliveCharacters };
+//getCharactersByLocation
+const getCharactersByLocation = async (req, res) => {
+  const { location } = req.params;
+
+  try {
+    const response = await axios.get(`${baseURL}/location/?name=${location}`);
+    const locations = response.data.results[0];
+    const characterUrls = locations.residents;
+
+    const characters = await Promise.all(
+      characterUrls.map(async (characterUrl) => {
+        const response = await axios.get(characterUrl);
+        return response.data.name;
+      })
+    );
+    res.status(200).json(characters);
+  } catch (error) {
+    console.log("error", error);
+    const { status, statusText } = error.response;
+    res.status(status).json({ message: statusText });
+  }
+};
+
+module.exports = {
+  getCharacters,
+  getCharacterById,
+  getCharactersByStatus,
+  getCharactersByLocation,
+};

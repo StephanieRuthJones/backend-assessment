@@ -41,7 +41,8 @@ _Tips:_
   - [ ] Set the `port` to `3000`
   - [ ] Set up the `app` object to use `express.json()` middleware to parse JSON bodies
   - [ ] Use `/` as the base path for all definition routes
-  - [ ] Use `/api` as the base path for all character routes
+  - [ ] Use `/characters` as the base path for all character routes
+  - [ ] Use `/episodes` as the base path for all character routes
   - [ ] Set up the server to listen on port `3000`.
 
 ### Part I - Basic GET Routes
@@ -57,6 +58,10 @@ _Tips:_
 `/root` Route
 
 - [ ] Create a GET `/root` route in the `definitionRoutes.js` that responds with a `200 status` and returns a JSON object with a `message` key assigned to a string that is the name of the root file that will execute when this application is started (i.e., the file responsible for setting up the server, loading the models and controllers, and defining any middleware or routes that the application will use).
+
+Commit to Github
+
+- [ ] Commit your work to Github and push to your forked repository w/ a commit message that reads, "Part I - Basic GET Routes".
 
 ### Part II - API GET Routes: Return Rick and Morty Data
 
@@ -80,22 +85,36 @@ Create a GET route in the `charactersRoutes.js` file that:
   - [ ] The array of characters should be an array of name strings, sorted by first name in alphabetical order.
 - [ ] If the `catch` block is triggered, it returns the error `status` and a JSON object with a `message` key assigned to the error message contained in the `axios` error response data. Use [Axios Response Schema documentation](https://axios-http.com/docs/res_schema) as needed.
 
+Commit to Github
+
+- [ ] Commit your work to Github and push to your forked repository w/ a commit message that reads, "Part II - API GET Routes: Return Rick and Morty Data".
+
 ### Part III - Advanced Routes: Return Combined Data
 
-`characters/:location` Route:
+`/characters/location/:location` Route:
 Create a GET route in the `charactersRoutes.js` file that:
 
-- [ ] Returns an array of **Rick and Morty** characters who are residents of the specified location.
-  - [ ] The `location` parameter should be case insensitive.
-  - [ ] The array of characters should be an array of name strings, sorted by first name in alphabetical order.
-- [ ] Returns an error message of `"Location not found"` if the location is not found.
-- [ ] Returns an error message of `"No characters found"` if no characters are found for the specified location.
+- [ ] Returns an array of **Rick and Morty** character names in alphabetical order who are residents of the first returned location. If multiple locations match the parameter, only return the characters from the first location in the returned array.
+- [ ] If the `catch` block is triggered, it returns the error `status` and a JSON object with a `message` key assigned to the error `statusText`. Use [Axios Response Schema documentation](https://axios-http.com/docs/res_schema) as needed.
 
-`characters/:episode` Route:
+`/airdate/:date` Route:
 Create a GET route in the `charactersRoutes.js` file that:
+- [ ] Returns 
 
-- [ ] Returns an array of **Rick and Morty** characters who appear in the specified episode.
-  - [ ] The `episode` parameter should be case insensitive.
-  - [ ] The array of characters should be an array of name strings, sorted by first name in alphabetical order.
-- [ ] Returns an error message of `"Episode not found"` if the episode is not found.
-- [ ] Returns an error message of `"No characters found"` if no characters are found for the specified episode.
+Commit to Github
+
+- [ ] Commit your work to Github and push to your forked repository w/ a commit message that reads, "Part III - Advanced Routes: Return Combined Data".
+
+### Part IV - Error Handling Middleware
+
+- [ ] Create error handling middleware in the `errorHandler.js` file and implement it in the `app.js` file that meets the following requirements:
+  - [ ] Logs the error message to the console.
+- [ ] Refactor the `characters/location/:location` and `characters/:episode` controllers to trigger error handling middleware in their `catch` blocks.
+
+The middleware should:
+
+- [ ] Logs the error message to the console.
+- [ ] Logs the error stack to the console.
+- [ ] Logs the error status to the console.
+- [ ] Logs the error status text to the console.
+- [ ]

@@ -7,17 +7,21 @@ const router = express.Router();
 const {
   getCharacters,
   getCharacterById,
-  getAliveCharacters,
+  getCharactersByStatus,
+  getCharactersByLocation,
 } = require("../controllers/characterControllers");
 
-//GET /api/characters - Get all Rick and Morty characters
-router.get("/characters", getCharacters);
+//GET /characters - Get all Rick and Morty characters
+router.get("/", getCharacters);
 
-//GET /api/characters/:id - Get a single Rick and Morty character by ID
-router.get("/characters/:id", getCharacterById);
+//GET /characters/:id - Get a single Rick and Morty character by ID
+router.get("/:id", getCharacterById);
 
-//GET /api/characters/alive - Get all Rick and Morty characters who are alive
-router.get("/characters/status/:status", getAliveCharacters);
+//GET /characters/:status - Get Rick and Morty characters who are alive or dead based on status param
+router.get("/status/:status", getCharactersByStatus);
+
+//GET /characters/location/:location - Get all Rick and Morty characters who reside in a particular location
+router.get("/location/:location", getCharactersByLocation);
 
 //Export the router
 module.exports = router;
