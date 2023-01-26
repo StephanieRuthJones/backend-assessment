@@ -11,17 +11,20 @@ To complete this assessment, complete every task in Parts I through V of the cha
 _Requirements to Pass_
 
 - All routes must return the correct status code and data.
-- Your code must be clean and readable. It should follow the DRY principle.
-- Errors must be handled and returned to the user.
-- `try/catch` blocks must be used to make requests and handle errors rather than promise chaining.
 - All routes must return the correct status code and data.
+- Routes must be created in the appropriate files within the `routes` folder.
+- Controllers must be created in the appropriate files within the `controllers` folder.
+- `async/await` and `try/catch` blocks must be used to make requests and handle errors rather than promise chaining.
+- Errors must be handled and returned to the user.
+- The MongoDB database must be set up correctly.
+- The login system must be secured using JWT.
 - Submit your github repo link with the `.env` file included.
+- Your code must be clean and readable. It should follow the DRY principle.
 
 _Important Note(s):_
 
 - Use [axios](https://www.npmjs.com/package/axios) to make API requests.
-- Routes must be created in the appropriate files within the `routes` folder.
-- Controllers must be created in the appropriate files within the `controllers` folder.
+- Upon completing this challenge, submit your github repo link and the `.env` file.
 
 _Tips:_
 
@@ -29,6 +32,7 @@ _Tips:_
 - Use [axios documentation](https://www.npmjs.com/package/axios) as needed.
 - Use [Express documentation](https://expressjs.com/en/4x/api.html) as needed.
 - Use [Rick and Morty API](https://rickandmortyapi.com/documentation/) documentation as needed.
+- Use [MongoDB](https://www.mongodb.com/docs/) documentation as needed.
 - Be sure to import and register routes in the `app.js` file as you create them.
 
 ### Part I - Setup Instructions
@@ -36,6 +40,8 @@ _Tips:_
 - [ ] Fork and clone this repository.
 - [ ] Run `npm install` to download dependencies.
 - [ ] Run `npm run server` to start the server w/ `nodemon`.
+- [ ] Create a `.gitignore` file and add `node_modules` and `.env` to it.
+- [ ] Create a `.env` file and add `PORT=3000` to it.
 - [ ] Set up the `app.js` file:
 
   - [ ] Require the `express` module
@@ -49,47 +55,51 @@ _Tips:_
     - [ ] You should see your "Listening on port 3000" log in the terminal.
     - [ ] When you visit `http://localhost:3000/` in your browser, you should see a JSON object, `{message: "Welcome to the Rick and Morty API!"}`.
 
+Commit to Github
+
+- [ ] Commit your work to Github and push to your forked repository w/ a commit message that reads, `"Part I - Setup"`.
+
 ### Part II - API GET Routes: Return Rick and Morty Data
 
-All routes in this section should be created in the `charactersRoutes.js` file.
+All routes in this section should be created in the `characterRoutes.js` file.
 
-- [ ] Use `/api` as the base path for all character routes
+- [ ] Use `/characters` as the base path for all character routes
 
 `/characters` Route:
-Create a GET route in the `charactersRoutes.js` file that:
+Create a GET route in the `characterRoutes.js` file that:
 
 - [ ] Returns an array of **Rick and Morty** characters.
 - [ ] If the `catch` block is triggered, returns a `500` status and a JSON object with a `message` key assigned to a string that reads, `"Server error. Please try again later."`
 
 `/characters/:id` Route:
-Create a GET route in the `charactersRoutes.js` file that:
+Create a GET route in the `characterRoutes.js` file that:
 
 - [ ] Returns a single **Rick and Morty** character object based on an ID parameter.
 - [ ] If the `catch` block is triggered, it returns the error `status` and a JSON object with a `message` key assigned to the error `statusText`. Use [Axios Response Schema documentation](https://axios-http.com/docs/res_schema) as needed.
 
 `/characters/status/:status` Route:
-Create a GET route in the `charactersRoutes.js` file that:
+Create a GET route in the `characterRoutes.js` file that:
 
 - [ ] Returns an array of **Rick and Morty** characters who are either alive or dead based on a `status` parameter.
-  - [ ] The `status` parameter should be case insensitive.
   - [ ] The array of characters should be an array of name strings, sorted by first name in alphabetical order.
+  - [ ] If the `status` parameter is not `alive` or `dead`, it returns a `404` status and a JSON object with a `message` key assigned to a string that reads, `"The status must be alive or dead."`
 - [ ] If the `catch` block is triggered, it returns the error `status` and a JSON object with a `message` key assigned to the error message contained in the `axios` error response data. Use [Axios Response Schema documentation](https://axios-http.com/docs/res_schema) as needed.
 
 Commit to Github
 
-- [ ] Commit your work to Github and push to your forked repository w/ a commit message that reads, "Part II - API GET Routes: Return Rick and Morty Data".
+- [ ] Commit your work to Github and push to your forked repository w/ a commit message that reads, `"Part II - API GET Routes: Return Rick and Morty Data"`.
 
 ### Part III - Advanced Routes: Return Combined Data
 
 `/characters/location/:location` Route:
-Create a GET route in the `charactersRoutes.js` file that:
+Create a GET route in the `characterRoutes.js` file that:
 
 - [ ] Returns an array of **Rick and Morty** character names in alphabetical order who are residents of the first returned location. If multiple locations match the parameter, only return the characters from the first location in the returned array.
 - [ ] If the `catch` block is triggered, it returns the error `status` and a JSON object with a `message` key assigned to the error `statusText`. Use [Axios Response Schema documentation](https://axios-http.com/docs/res_schema) as needed.
 
 Commit to Github
 
-- [ ] Commit your work to Github and push to your forked repository w/ a commit message that reads, "Part III - Advanced Routes: Return Combined Data".
+- [ ] Commit your work to Github and push to your forked repository w/ a commit message that reads, `"Part III - Advanced Routes: Return Combined Data"`.
 
 ### Part IV - Error Handling Middleware
 
@@ -99,15 +109,26 @@ Commit to Github
   - [ ] In the `errorHandler.js` file, create a `notFound` middleware that returns a `404` status and a JSON object with a `message` key assigned to a string that reads, `"Resource not found."`
 - [ ] Refactor the `characters/location/:location` controllers to trigger error handling middleware in their `catch` blocks.
 
+Commit to Github
+
+- [ ] Commit your work to Github and push to your forked repository w/ a commit message that reads, `"Part III - Advanced Routes: Return Combined Data"`.
+
 ### Part V - Set up MongoDB and connect to your application
 
 - [ ] Set up a MongoDB database
 - [ ] Connect it to your application.
 - [ ] Save all sensitive passwords and keys to a `.env` file.
-- [ ] Put the `.env` file in your `.gitignore` file.
+
+Commit to Github
+
+- [ ] Commit your work to Github and push to your forked repository w/ a commit message that reads, `"Part V - Set up MongoDB"`.
 
 ### Part VI - Authentication
 
 - [ ] Create Authentication using JWT
 - [ ] Create a login route that returns a JWT token
 - [ ] Create a middleware that checks for the JWT token and verifies it
+
+Commit to Github
+
+- [ ] Commit your work to Github and push to your forked repository w/ a commit message that reads, `"Part VI - Authentication"`.

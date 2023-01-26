@@ -34,6 +34,10 @@ const getCharacterById = async (req, res) => {
 
 const getCharactersByStatus = async (req, res) => {
   const { status } = req.params;
+  if (status !== "alive" && status !== "dead") {
+    res.status(404).json({ message: "The status must be alive or dead." });
+  }
+
   try {
     const response = await axios.get(`${baseURL}/character?status=${status}`);
     console.log("response.data.results", response.data.results);
