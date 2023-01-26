@@ -12,19 +12,13 @@ const port = 3000;
 app.use(express.json());
 
 //Require routes from files
-const definitionRoutes = require("./routes/definitionRoutes");
 const characterRoutes = require("./routes/characterRoutes");
-const episodeRoutes = require("./routes/episodeRoutes");
+
 //Require error handling middleware
 const errorHandler = require("./middleware/errorHandler");
-//Use /definitions as the base route for definition routes
-app.use("/definitions", definitionRoutes);
 
 //Use /characters as the base route for character routes
 app.use("/characters", characterRoutes);
-
-//Use /episodes as the base route for episode routes
-app.use("/episodes", episodeRoutes);
 
 //Set up error handling middleware
 app.use(errorHandler);
