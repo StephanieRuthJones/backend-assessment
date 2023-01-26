@@ -2,11 +2,11 @@
 
 ## Introduction
 
-Welcome to the Node and Express Backend Assessment!
+Welcome to the Backend Assessment!
 
-In this challenge, you will be using the [Rick and Morty API](https://rickandmortyapi.com/documentation/) to build API endpoints and to combine data from the API. You will be creating routes and controllers in the appropriate folder/files as well as middleware to handle errors.
+This assessment requires you to build a Node.js Express MongoDB app using Axios. In this challenge, you will use the [Rick and Morty API](https://rickandmortyapi.com/documentation/) to build API endpoints and to combine data from the API. During this assessment, you will need to create simple and complex GET routes, error-handling middleware, a MongoDB database, as well as a login system with Authentication using JWT.
 
-To complete this assessment, follow the setup instructions, then complete every task in Parts I through V of the challenge outlined below.
+To complete this assessment, complete every task in Parts I through V of the challenge outlined below.
 
 _Requirements to Pass_
 
