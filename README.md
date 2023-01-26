@@ -14,6 +14,8 @@ _Requirements to Pass_
 - Your code must be clean and readable. It should follow the DRY principle.
 - Errors must be handled and returned to the user.
 - `try/catch` blocks must be used to make requests and handle errors rather than promise chaining.
+- All routes must return the correct status code and data.
+- Submit your github repo link with the `.env` file included.
 
 _Important Note(s):_
 
@@ -29,7 +31,7 @@ _Tips:_
 - Use [Rick and Morty API](https://rickandmortyapi.com/documentation/) documentation as needed.
 - Be sure to import and register routes in the `app.js` file as you create them.
 
-### Setup Instructions
+### Part I - Setup Instructions
 
 - [ ] Fork and clone this repository.
 - [ ] Run `npm install` to download dependencies.
@@ -40,30 +42,18 @@ _Tips:_
   - [ ] Set up the `app` object
   - [ ] Set the `port` to `3000`
   - [ ] Set up the `app` object to use `express.json()` middleware to parse JSON bodies
-  - [ ] Use `/` as the base path for all definition routes
-  - [ ] Use `/characters` as the base path for all character routes
-  - [ ] Use `/episodes` as the base path for all character routes
+  - [ ] Add a GET route to `/` that returns a `200` status and a JSON object with a `message` key assigned to a string that reads, `"Welcome to the Rick and Morty API!"`
   - [ ] Set up the server to listen on port `3000`.
-
-### Part I - Basic GET Routes
-
-`/route` Route
-
-- [ ] Create a GET `/route` route in the `definitionRoutes.js` file that responds with a `200 status` and returns a JSON object with a `message` key assigned to a string defining what a `route` is in the context of an API
-
-`/controller` Route
-
-- [ ] Create a GET `/controller` route in the `definitionRoutes.js` file that responds with a `200 status` and returns a JSON object with a `message` key assigned to a string defining what a `controller` is in the context of an API
-
-`/root` Route
-
-- [ ] Create a GET `/root` route in the `definitionRoutes.js` that responds with a `200 status` and returns a JSON object with a `message` key assigned to a string that is the name of the root file that will execute when this application is started (i.e., the file responsible for setting up the server, loading the models and controllers, and defining any middleware or routes that the application will use).
-
-Commit to Github
-
-- [ ] Commit your work to Github and push to your forked repository w/ a commit message that reads, "Part I - Basic GET Routes".
+  - [ ] Run your server with `npm run server`
+  - [ ] Check that your server is running:
+    - [ ] You should see your "Listening on port 3000" log in the terminal.
+    - [ ] When you visit `http://localhost:3000/` in your browser, you should see a JSON object, `{message: "Welcome to the Rick and Morty API!"}`.
 
 ### Part II - API GET Routes: Return Rick and Morty Data
+
+All routes in this section should be created in the `charactersRoutes.js` file.
+
+- [ ] Use `/api` as the base path for all character routes
 
 `/characters` Route:
 Create a GET route in the `charactersRoutes.js` file that:
@@ -105,12 +95,19 @@ Commit to Github
 
 - [ ] Create error handling middleware in the `errorHandler.js` file and implement it in the `app.js` file that meets the following requirements:
   - [ ] Logs the error message to the console.
-- [ ] Refactor the `characters/location/:location` and `characters/:episode` controllers to trigger error handling middleware in their `catch` blocks.
+  - [ ] Returns the error `status` and a JSON object with a `message` key assigned to the error `statusText`. Use [Axios Response Schema documentation](https://axios-http.com/docs/res_schema) as needed.
+  - [ ] In the `errorHandler.js` file, create a `notFound` middleware that returns a `404` status and a JSON object with a `message` key assigned to a string that reads, `"Resource not found."`
+- [ ] Refactor the `characters/location/:location` controllers to trigger error handling middleware in their `catch` blocks.
 
-The middleware should:
+### Part V - Set up MongoDB and connect to your application
 
-- [ ] Logs the error message to the console.
-- [ ] Logs the error stack to the console.
-- [ ] Logs the error status to the console.
-- [ ] Logs the error status text to the console.
-- [ ]
+- [ ] Set up a MongoDB database
+- [ ] Connect it to your application.
+- [ ] Save all sensitive passwords and keys to a `.env` file.
+- [ ] Put the `.env` file in your `.gitignore` file.
+
+### Part VI - Authentication
+
+- [ ] Create Authentication using JWT
+- [ ] Create a login route that returns a JWT token
+- [ ] Create a middleware that checks for the JWT token and verifies it
