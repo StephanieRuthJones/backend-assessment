@@ -70,12 +70,15 @@ const getCharactersByLocation = async (req, res) => {
     );
     res.status(200).json(characters);
   } catch (error) {
-    console.log("error", error);
-    const { status, statusText } = error.response;
-    res.status(status).json({ message: statusText });
+    // console.log("error", error);
+    // const { status, statusText } = error.response;
+    // res.status(status).json({ message: statusText });
+    next(error);
   }
 };
-
+//throw error in try, then will hit the catch block => then should hit error handler
+//res.status(400)
+// Throw new error(“Email already exist”)
 module.exports = {
   getCharacters,
   getCharacterById,
