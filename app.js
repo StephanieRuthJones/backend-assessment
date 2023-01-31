@@ -24,6 +24,7 @@ const userRoutes = require("./routes/userRoutes");
 const { errorHandler } = require("./middleware/errorMiddleware");
 
 //Use /characters as the base route for character routes
+
 app.use("/api/characters", characterRoutes);
 app.use("/api/favorites", favoritesRoutes);
 app.use("/api/user", userRoutes);
