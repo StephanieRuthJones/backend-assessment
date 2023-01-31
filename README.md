@@ -4,25 +4,26 @@
 
 Welcome to the Backend Assessment!
 
-This assessment requires you to build a Node.js Express MongoDB app using Axios. In this challenge, you will use the [Rick and Morty API](https://rickandmortyapi.com/documentation/) to build API endpoints and to combine data from the API. During this assessment, you will need to create simple and complex GET routes, error-handling middleware, a MongoDB database, as well as a login system with Authentication using JWT.
+This assessment requires you to build a `Node.js` `Express` `MongoDB` app. In this challenge, you will use the [Rick and Morty API](https://rickandmortyapi.com/documentation/) to build API endpoints and to combine data from the API. During this assessment, you will need to create simple and complex `GET` routes as well as full `CRUD` functionality for a character `favorites` collection. You will connect your app to a `MongoDB` database and create a full login system with Authentication using `JWT`.
 
-To complete this assessment, complete every task in Parts I through V of the challenge outlined below.
+To complete this assessment, complete every task in Parts I through VII of the challenge outlined below.
 
 _Requirements to Pass_
 
 - All routes must return the correct status code and data.
-- All routes must return the correct status code and data.
 - Routes must be created in the appropriate files within the `routes` folder.
 - Controllers must be created in the appropriate files within the `controllers` folder.
+- Models must be created in the appropriate files within the `models` folder.
+- The `db.js` file must be set up correctly.
 - `async/await` and `try/catch` blocks must be used to make requests and handle errors rather than promise chaining.
 - Errors must be handled and returned to the user.
-- The MongoDB database must be set up correctly.
-- The login system must be secured using JWT.
-- Submit your github repo link with the `.env` file included.
+- The `MongoDB` database must be set up correctly.
+- The login system must be secured using `JWT`.
 - Your code must be clean and readable. It should follow the DRY principle.
 
 _Important Note(s):_
 
+- Submit your github repo link with the `.env` file included.
 - Use [axios](https://www.npmjs.com/package/axios) to make requests to the [Rick and Morty API](https://rickandmortyapi.com/documentation/).
 - Save all sensitive passwords and keys to an `.env` file.
 - Upon completing this challenge, submit your github repo link and the `.env` file.
@@ -36,7 +37,8 @@ _Documentation:_
 - [MongoDB](https://www.mongodb.com/docs/)
 - [Mongoose](https://mongoosejs.com/docs/guide.html)
 - [JWT](https://jwt.io/introduction)
-- [bcrypt](https://www.npmjs.com/package/bcrypt)
+- [bcryptjs](https://www.npmjs.com/package/bcryptjs)
+- [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
 - [dotenv](https://www.npmjs.com/package/dotenv)
 
 _Downloads:_
@@ -47,17 +49,16 @@ _Downloads:_
 ### Part I - Setup Instructions
 
 - [ ] Fork and clone this repository.
-- [ ] Run `npm install` to download dependencies.
+- [ ] Run `npm install` to install dependencies.
 - [ ] Run `npm run server` to start the server w/ `nodemon`.
 - [ ] Create a `.gitignore` file and add `node_modules` and `.env` to it.
 - [ ] Create a `.env` file and add `PORT=3000` to it.
 - [ ] Set up the `app.js` file:
-
   - [ ] Require the `express` module
   - [ ] Set up the `app` object
   - [ ] Set the `port` to `3000`
   - [ ] Set up the `app` object to use `express.json()` middleware to parse JSON bodies
-  - [ ] Add a GET route to `/` that returns a `200` status and a JSON object with a `message` key assigned to a string that reads, `"Welcome to the Rick and Morty API!"`
+  - [ ] Add a `GET` route to `/` that returns a `200` status and a JSON object with a `message` key assigned to a string that reads, `"Welcome to the Rick and Morty API!"`
   - [ ] Set up the server to listen on port `3000`.
   - [ ] Run your server with `npm run server`
   - [ ] Check that your server is running:
@@ -112,11 +113,9 @@ Commit to Github
 
 ### Part IV - Set up MongoDB and connect to your application
 
-- [ ] Set up a MongoDB database
+- [ ] Set up a `MongoDB` database
 - [ ] Connect it to your application.
-- [ ] Add MONGO_URI to your `.env` file
-- [ ] Connect to your database
-- [ ] Use the `dotenv` package to access your `.env` file.
+- [ ] Add the `MONGO_URI` to your `.env` file
 
 Commit to Github
 
@@ -124,18 +123,30 @@ Commit to Github
 
 ### Part V - Authentication
 
-Create Authentication using JWT:
+Create Authentication using `JWT`:
+
+- [ ] Create a `User` model that has the following properties:
+
+  - [ ] `username` - a string
+  - [ ] `password` - a string
+  - [ ] `email` - a string
+  - [ ] Set all properties to required
+  - [ ] Make sure that the `email` is unique
+  - [ ] Include a timestamp
 
 - [ ] Create a `register` route where users can sign up for your application
+
   - [ ] All passwords should be hashed using `bcrypt` and salt rounds
+
   - [ ] Make sure that the user's email is unique
   - [ ] If the user's email is not unique, return a `400` status and a JSON object with a `message` key assigned to a string that reads, `"Email already exists."`
+
 - [ ] Create a `login` route where users can sign in
 - [ ] Create a `login` route that compares the hashed password to the password in the user request and returns a `JWT token`
 - [ ] Create a `logout` route that invalidates the `JWT token`
 - [ ] Create the `JWT token` using `jsonwebtoken`
 - [ ] Create a middleware that checks for the `JWT token` and verifies it
-- [ ] Create a `/me` route that returns the user's information based on the `JWT token`
+- [ ] Create a private `/me` route that returns the user's information based on the `JWT token`
 
 Commit to Github
 
@@ -148,6 +159,7 @@ Commit to Github
 - [ ] Implement `asyncHandler` to avoid `try/catch` blocks and to trigger error handling middleware
 - [ ] Create a new collection in your database called `favorites`
 - [ ] Create a `model` for your `favorites` collection in the `db.js` file with a schema that includes the following:
+  - [ ] `user` - the user's `id` and a reference to the `User` model
   - [ ] `name` - the character's name
   - [ ] `image` - the character's image URL
 - [ ] Create a route that allows a user to add a character's `name` and `image` url as well as a `description` of why they added the character to their `favorites` collection

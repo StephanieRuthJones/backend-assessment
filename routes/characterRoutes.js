@@ -9,7 +9,7 @@ const {
   getCharacterById,
   getCharactersByStatus,
   getCharactersByLocation,
-} = require("../controllers/characterControllers");
+} = require("../controllers/characterController");
 
 //GET /characters - Get all Rick and Morty characters
 router.get("/", getCharacters);

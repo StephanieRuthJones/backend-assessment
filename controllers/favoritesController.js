@@ -7,7 +7,7 @@ const Favorite = require("../models/favoritesModel");
 //@route GET /favorites
 //@access Private
 const getFavorites = asyncHandler(async (req, res) => {
-  const favorites = await Favorite.find();
+  const favorites = await Favorite.find({ user: req.user.id });
   res.json(favorites);
 });
 
@@ -22,6 +22,7 @@ const addFavorite = asyncHandler(async (req, res) => {
     name: req.body.name,
     image: req.body.image,
     description: req.body.description,
+    user: req.user.id,
   });
 
   res.status(200).json(favorite);

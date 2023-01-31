@@ -19,12 +19,14 @@ app.use(express.urlencoded({ extended: false }));
 //Require routes from files
 const characterRoutes = require("./routes/characterRoutes");
 const favoritesRoutes = require("./routes/favoritesRoutes");
+const userRoutes = require("./routes/userRoutes");
 //Require error handling middleware
 const { errorHandler } = require("./middleware/errorMiddleware");
 
 //Use /characters as the base route for character routes
-app.use("/characters", characterRoutes);
-app.use("/favorites", favoritesRoutes);
+app.use("/api/characters", characterRoutes);
+app.use("/api/favorites", favoritesRoutes);
+app.use("/api/user", userRoutes);
 
 //Set up error handling middleware
 app.use(errorHandler);

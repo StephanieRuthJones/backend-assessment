@@ -4,22 +4,22 @@ const {
   addFavorite,
   updateFavorite,
   deleteFavorite,
-} = require("../controllers/favoritesControllers");
+} = require("../controllers/favoritesController");
+
+//Import protect middleware
+const { protect } = require("../middleware/authMiddleware");
 //Require express
 const express = require("express");
 
 //Create a router
 const router = express.Router();
 
-//GET Favorites
-router.get("/", getFavorites);
-
-//POST A new favorite
-router.post("/", addFavorite);
-//UPDATE A favorite
-router.put("/:id", updateFavorite);
-
-//DELETE A favorite
-router.delete("/:id", deleteFavorite);
+//GET/POST Favorites
+router.route("/").get(protect, getFavorites).post(protect, addFavorite);
+//UPDATE/DELETE A favorite
+router
+  .route("/:id")
+  .put(protect, updateFavorite)
+  .delete(protect, deleteFavorite);
 
 module.exports = router;
