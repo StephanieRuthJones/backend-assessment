@@ -23,23 +23,26 @@ _Requirements to Pass_
 
 _Important Note(s):_
 
-- Use [axios](https://www.npmjs.com/package/axios) to make API requests.
+- Use [axios](https://www.npmjs.com/package/axios) to make requests to the [Rick and Morty API](https://rickandmortyapi.com/documentation/).
 - Save all sensitive passwords and keys to an `.env` file.
 - Upon completing this challenge, submit your github repo link and the `.env` file.
 
-_Tips:_
+_Documentation:_
 
-- Use [Postman](https://www.postman.com/downloads/) to test your API endpoints. Read [Postmant documentation] (https://learning.postman.com/docs/getting-started/introduction/) as needed.
-- Use [axios documentation](https://www.npmjs.com/package/axios) as needed.
-- Use [Express documentation](https://expressjs.com/en/4x/api.html) as needed.
-- Use [Rick and Morty API](https://rickandmortyapi.com/documentation/) documentation as needed.
-- Use [MongoDB](https://www.mongodb.com/docs/) documentation as needed.
-- Download Compass to view your MongoDB database. [Download Compass](https://www.mongodb.com/try/download/compass)
-- Use [Mongoose](https://mongoosejs.com/docs/guide.html) documentation as needed.
-- Use [JWT](https://jwt.io/introduction) documentation as needed.
-- Use [bcrypt](https://www.npmjs.com/package/bcrypt) documentation as needed.
-- Use [dotenv](https://www.npmjs.com/package/dotenv) documentation as needed.
-- Be sure to import and register routes in the `app.js` file as you create them.
+- [Postmant documentation] (https://learning.postman.com/docs/getting-started/introduction/)
+- [axios documentation](https://www.npmjs.com/package/axios)
+- [Express documentation](https://expressjs.com/en/4x/api.html)
+- [Rick and Morty API](https://rickandmortyapi.com/documentation/)
+- [MongoDB](https://www.mongodb.com/docs/)
+- [Mongoose](https://mongoosejs.com/docs/guide.html)
+- [JWT](https://jwt.io/introduction)
+- [bcrypt](https://www.npmjs.com/package/bcrypt)
+- [dotenv](https://www.npmjs.com/package/dotenv)
+
+_Downloads:_
+
+- [Download Compass](https://www.mongodb.com/try/download/compass) to view your MongoDB database.
+- [Download Postman](https://www.postman.com/downloads/) to test your API endpoints.
 
 ### Part I - Setup Instructions
 
@@ -123,7 +126,7 @@ Commit to Github
 
 Create Authentication using JWT:
 
-- [ ] Create a `register` route where users can sign up
+- [ ] Create a `register` route where users can sign up for your application
   - [ ] All passwords should be hashed using `bcrypt` and salt rounds
   - [ ] Make sure that the user's email is unique
   - [ ] If the user's email is not unique, return a `400` status and a JSON object with a `message` key assigned to a string that reads, `"Email already exists."`
