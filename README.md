@@ -24,6 +24,7 @@ _Requirements to Pass_
 _Important Note(s):_
 
 - Use [axios](https://www.npmjs.com/package/axios) to make API requests.
+- Save all sensitive passwords and keys to an `.env` file.
 - Upon completing this challenge, submit your github repo link and the `.env` file.
 
 _Tips:_
@@ -33,6 +34,11 @@ _Tips:_
 - Use [Express documentation](https://expressjs.com/en/4x/api.html) as needed.
 - Use [Rick and Morty API](https://rickandmortyapi.com/documentation/) documentation as needed.
 - Use [MongoDB](https://www.mongodb.com/docs/) documentation as needed.
+- Download Compass to view your MongoDB database. [Download Compass](https://www.mongodb.com/try/download/compass)
+- Use [Mongoose](https://mongoosejs.com/docs/guide.html) documentation as needed.
+- Use [JWT](https://jwt.io/introduction) documentation as needed.
+- Use [bcrypt](https://www.npmjs.com/package/bcrypt) documentation as needed.
+- Use [dotenv](https://www.npmjs.com/package/dotenv) documentation as needed.
 - Be sure to import and register routes in the `app.js` file as you create them.
 
 ### Part I - Setup Instructions
@@ -101,30 +107,19 @@ Commit to Github
 
 - [ ] Commit your work to Github and push to your forked repository w/ a commit message that reads, `"Part III - Advanced Routes: Return Combined Data"`.
 
-### Part IV - Error Handling Middleware
-
-- [ ] Create error handling middleware in the `errorHandler.js` file and implement it in the `app.js` file that meets the following requirements:
-  - [ ] Logs the error message to the console.
-  - [ ] Returns the error `status` and a JSON object with a `message` key assigned to the error `statusText`. Use [Axios Response Schema documentation](https://axios-http.com/docs/res_schema) as needed.
-  - [ ] In the `errorHandler.js` file, create a `notFound` middleware that returns a `404` status and a JSON object with a `message` key assigned to a string that reads, `"Resource not found."`
-- [ ] Refactor the `characters/location/:location` controllers to trigger error handling middleware in their `catch` blocks.
-
-Commit to Github
-
-- [ ] Commit your work to Github and push to your forked repository w/ a commit message that reads, `"Part III - Advanced Routes: Return Combined Data"`.
-
-### Part V - Set up MongoDB and connect to your application
+### Part IV - Set up MongoDB and connect to your application
 
 - [ ] Set up a MongoDB database
 - [ ] Connect it to your application.
-- [ ] Save all sensitive passwords and keys to a `.env` file.
+- [ ] Add MONGO_URI to your `.env` file
+- [ ] Connect to your database
 - [ ] Use the `dotenv` package to access your `.env` file.
 
 Commit to Github
 
 - [ ] Commit your work to Github and push to your forked repository w/ a commit message that reads, `"Part V - Set up MongoDB"`.
 
-### Part VI - Authentication
+### Part V - Authentication
 
 Create Authentication using JWT:
 
@@ -147,8 +142,30 @@ Commit to Github
 
 **Note:** All functionality in this section should only be accessed by authenticated users.
 
+- [ ] Implement asyncHandler to trigger error handling middleware
 - [ ] Create a new collection in your database called `favorites`
+- [ ] Create a model for your `favorites` collection with a schema that includes the following:
+  - [ ] `name` - the character's name
+  - [ ] `image` - the character's image URL
 - [ ] Create a route that allows a user to add a character's id and a description of why they like the character to their `favorites` collection
 - [ ] Create a route that allows a user to get all of their favorites
 - [ ] Create a route that allows a user to remove a character from their favorites
 - [ ] Create a route that allows a user to edit their description of a character
+
+- [ ] Implement Mongoose to create a model for your `favorites` collection
+
+---
+
+- Error Handling Middleware
+
+- [ ] Create error handling middleware in the `errorHandler.js` file and implement it in the `app.js` file that meets the following requirements:
+  - [ ] Logs the error message to the console.
+  - [ ] Returns the error `status` and a JSON object with a `message` key assigned to the error `statusText`. Use [Axios Response Schema documentation](https://axios-http.com/docs/res_schema) as needed.
+  - [ ] In the `errorHandler.js` file, create a `notFound` middleware that returns a `404` status and a JSON object with a `message` key assigned to a string that reads, `"Resource not found."`
+- [ ] Refactor the `characters/location/:location` controllers to trigger error handling middleware in their `catch` blocks.
+
+Commit to Github
+
+- [ ] Commit your work to Github and push to your forked repository w/ a commit message that reads, `"Part III - Advanced Routes: Return Combined Data"`.
+
+### Part V
