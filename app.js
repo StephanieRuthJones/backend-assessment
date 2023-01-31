@@ -1,12 +1,12 @@
 // Description: This is the main entry point of the application
 //Require the express module
 const express = require("express");
+const dotenv = require("dotenv").config();
+//Set the port to 3000
+const port = 3000;
 
 //Create an express application
 const app = express();
-
-//Set the port to 3000
-const port = 3000;
 
 //Use express.json() to parse JSON bodies
 app.use(express.json());
