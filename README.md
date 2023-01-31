@@ -138,34 +138,28 @@ Commit to Github
 
 - [ ] Commit your work to Github and push to your forked repository w/ a commit message that reads, `"Part VI - Authentication"`.
 
-### Part VII - Collection of Favorite Characters
+### Part VI - Collection of Favorite Characters
 
 **Note:** All functionality in this section should only be accessed by authenticated users.
 
-- [ ] Implement asyncHandler to trigger error handling middleware
+- [ ] Implement `asyncHandler` to avoid `try/catch` blocks and to trigger error handling middleware
 - [ ] Create a new collection in your database called `favorites`
-- [ ] Create a model for your `favorites` collection with a schema that includes the following:
+- [ ] Create a `model` for your `favorites` collection in the `db.js` file with a schema that includes the following:
   - [ ] `name` - the character's name
   - [ ] `image` - the character's image URL
-- [ ] Create a route that allows a user to add a character's id and a description of why they like the character to their `favorites` collection
-- [ ] Create a route that allows a user to get all of their favorites
-- [ ] Create a route that allows a user to remove a character from their favorites
-- [ ] Create a route that allows a user to edit their description of a character
-
-- [ ] Implement Mongoose to create a model for your `favorites` collection
-
----
-
-- Error Handling Middleware
-
-- [ ] Create error handling middleware in the `errorHandler.js` file and implement it in the `app.js` file that meets the following requirements:
-  - [ ] Logs the error message to the console.
-  - [ ] Returns the error `status` and a JSON object with a `message` key assigned to the error `statusText`. Use [Axios Response Schema documentation](https://axios-http.com/docs/res_schema) as needed.
-  - [ ] In the `errorHandler.js` file, create a `notFound` middleware that returns a `404` status and a JSON object with a `message` key assigned to a string that reads, `"Resource not found."`
-- [ ] Refactor the `characters/location/:location` controllers to trigger error handling middleware in their `catch` blocks.
+- [ ] Create a route that allows a user to add a character's `name` and `image` url as well as a `description` of why they added the character to their `favorites` collection
+- [ ] Create a route that allows a user to `get` all of their `favorites`
+- [ ] Create a route that allows a user to `remove` a character from their `favorites`
+- [ ] Create a route that allows a user to `edit` their `description` of why they added the character to their list of `favorites`
 
 Commit to Github
 
-- [ ] Commit your work to Github and push to your forked repository w/ a commit message that reads, `"Part III - Advanced Routes: Return Combined Data"`.
+- [ ] Commit your work to Github and push to your repository w/ a commit message that reads, `"Part VII - Collection of Favorite Characters"`
 
-### Part V
+### Part VII - Error Handling Middleware
+
+Create an `errorHandler` function in the `errorMiddleware.js` file that:
+
+- [ ] Responds with a `statusCode` and error `message`
+- [ ] Returns the `stack` trace only if the environment is in `development`
+- [ ] Implement the `errorHandler` function in your `app.js` file

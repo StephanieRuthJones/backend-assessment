@@ -15,12 +15,13 @@ const getFavorites = asyncHandler(async (req, res) => {
 //@route POST /favorites
 //@access Private
 const addFavorite = asyncHandler(async (req, res) => {
-  if (!req.body.name || !req.body.image) {
+  if (!req.body.name || !req.body.image || !req.body.description) {
     return res.status(400).json({ message: "Missing required fields" });
   }
   const favorite = await Favorite.create({
     name: req.body.name,
     image: req.body.image,
+    description: req.body.description,
   });
 
   res.status(200).json(favorite);
