@@ -15,87 +15,45 @@ const getFavorites = asyncHandler(async (req, res) => {
 //@route POST /favorites
 //@access Private
 const addFavorite = asyncHandler(async (req, res) => {
-  if (!req.body.name || !req.body.description || !req.body.image) {
+  if (!req.body.name || !req.body.image) {
     return res.status(400).json({ message: "Missing required fields" });
   }
-  const favorite = new Favorite({
+  const favorite = await Favorite.create({
     name: req.body.name,
-    description: req.body.description,
     image: req.body.image,
   });
-  const newFavorite = await favorite.save();
-  res.status(201).json(newFavorite);
 
-  //   if (!req.body.name || !req.body.description || !req.body.image) {
-  //     return res.status(400).json({ message: "Missing required fields" });
-  //   }
-  //   const favorite = new Favorite({
-  //     name: req.body.name,
-  //     description: req.body.description,
-  //     image: req.body.image,
-  //   });
-  //   try {
-  //     const newFavorite = await favorite.save();
-  //     res.status(201).json(newFavorite);
-  //   } catch (err) {
-  //     res.status(400).json({ message: err.message });
-  //   }
+  res.status(200).json(favorite);
 });
 
 //@desc Update a favorite
 //@route PUT /favorites/:id
 //@access Private
 const updateFavorite = asyncHandler(async (req, res) => {
-  if (!req.body.name || !req.body.description || !req.body.image) {
-    return res.status(400).json({ message: "Missing required fields" });
-  }
   const favorite = await Favorite.findById(req.params.id);
-  if (favorite == null) {
-    return res.status(404).json({ message: "Favorite not found" });
+  if (!favorite) {
+    res.status(404);
+    throw new Error("Favorite not found");
   }
-  favorite.name = req.body.name;
-  favorite.description = req.body.description;
-  favorite.image = req.body.image;
-
-  const updatedFavorite = await favorite.save();
-  res.json(updatedFavorite);
-
-  //   try {
-  //     const favorite = await Favorite.findById(req.params.id);
-  //     if (favorite == null) {
-  //       return res.status(404).json({ message: "Favorite not found" });
-  //     }
-  //     if (req.body.name != null) {
-  //       favorite.name = req.body.name;
-  //     }
-  //     if (req.body.description != null) {
-  //       favorite.description = req.body.description;
-  //     }
-  //     if (req.body.image != null) {
-  //       favorite.image = req.body.image;
-  //     }
-  //     const updatedFavorite = await favorite.save();
-  //     res.json(updatedFavorite);
-  //   } catch (err) {
-  //     res.status(500).json({ message: err.message });
-  //   }
+  const updatedFavorite = await Favorite.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true }
+  );
+  res.status(200).json(updatedFavorite);
 });
 
 //@desc Delete a favorite
 //@route DELETE /favorites/:id
 //@access Private
 const deleteFavorite = asyncHandler(async (req, res) => {
-  res.json({ message: "Delete a favorite" });
-  //   try {
-  //     const favorite = await Favorite.findById(req.params.id);
-  //     if (favorite == null) {
-  //       return res.status(404).json({ message: "Favorite not found" });
-  //     }
-  //     await favorite.remove();
-  //     res.json({ message: "Favorite deleted" });
-  //   } catch (err) {
-  //     res.status(500).json({ message: err.message });
-  //   }
+  const favorite = await Favorite.findById(req.params.id);
+  if (!favorite) {
+    res.status(404);
+    throw new Error("Favorite not found");
+  }
+  await favorite.remove();
+  res.json({ message: `Favorite id ${req.params.id} was deleted` });
 });
 
 module.exports = { getFavorites, addFavorite, updateFavorite, deleteFavorite };
