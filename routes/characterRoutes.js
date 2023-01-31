@@ -25,3 +25,4 @@ router.get("/location/:location", getCharactersByLocation);
 
 //Export the router
 module.exports = router;
+
